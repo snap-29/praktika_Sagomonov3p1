@@ -22,7 +22,6 @@ public class Product {
         this.description = description;
     }
 
-    // Геттеры и сеттеры (без JavaFX свойств)
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
 
