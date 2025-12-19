@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProductDAOTest {
 
-    // Мок DAO, работающий с коллекцией в памяти
     private static class TestProductDAO extends ProductDAO {
         private final List<Product> products = new ArrayList<>();
 
