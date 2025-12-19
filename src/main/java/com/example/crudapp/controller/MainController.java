@@ -52,7 +52,6 @@ public class MainController {
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        // Панель заголовка
         JPanel titlePanel = new JPanel(new BorderLayout());
         JLabel titleLabel = new JLabel("Управление продуктами", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -60,19 +59,14 @@ public class MainController {
         titlePanel.add(titleLabel, BorderLayout.CENTER);
         titlePanel.setBorder(new EmptyBorder(0, 0, 10, 0));
 
-        // Панель кнопок действий
         JPanel buttonPanel = createButtonPanel();
 
-        // Панель поиска
         JPanel searchPanel = createSearchPanel();
 
-        // Таблица продуктов
         JPanel tablePanel = createTablePanel();
 
-        // Панель пагинации
         JPanel paginationPanel = createPaginationPanel();
 
-        // Собираем верхнюю панель
         JPanel topPanel = new JPanel(new BorderLayout(10, 10));
         topPanel.add(buttonPanel, BorderLayout.WEST);
         topPanel.add(searchPanel, BorderLayout.EAST);
@@ -90,14 +84,12 @@ public class MainController {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
         panel.setBorder(new TitledBorder("Действия"));
 
-        // Кнопка "Добавить продукт"
         JButton addButton = new JButton("Добавить продукт");
         addButton.setBackground(new Color(39, 174, 96));
         addButton.setForeground(Color.WHITE);
         addButton.setFont(new Font("Arial", Font.BOLD, 12));
         addButton.addActionListener(e -> handleAddProduct());
 
-        // Кнопка "Редактировать"
         JButton editButton = new JButton("Редактировать");
         editButton.setBackground(new Color(52, 152, 219));
         editButton.setForeground(Color.WHITE);
@@ -105,7 +97,6 @@ public class MainController {
         editButton.addActionListener(e -> handleEditProduct());
         editButton.setEnabled(false);
 
-        // Кнопка "Удалить"
         JButton deleteButton = new JButton("Удалить");
         deleteButton.setBackground(new Color(231, 76, 60));
         deleteButton.setForeground(Color.WHITE);
@@ -117,7 +108,6 @@ public class MainController {
         panel.add(editButton);
         panel.add(deleteButton);
 
-        // Сохраняем ссылки для обновления состояния
         this.productTable = new JTable();
         productTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
@@ -200,7 +190,6 @@ public class MainController {
         navPanel.add(pageInfoLabel);
         navPanel.add(nextButton);
 
-        // Правая часть - выбор размера страницы
         JPanel sizePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
         sizePanel.add(new JLabel("Элементов на странице:"));
 
@@ -229,7 +218,6 @@ public class MainController {
                 updatePageInfoForSearch(products.size());
             }
 
-            // Заполняем таблицу
             for (Product product : products) {
                 tableModel.addRow(new Object[]{
                         product.getId().toString(),
@@ -268,7 +256,6 @@ public class MainController {
         nextButton.setEnabled(false);
     }
 
-    // Обработчики событий
     private void handleAddProduct() {
         showProductDialog(null);
     }
@@ -363,7 +350,6 @@ public class MainController {
                             updatedProduct.getDescription()
                     );
                 } else {
-                    // Обновление существующего
                     updatedProduct.setId(product.getId());
                     updatedProduct.setCreatedAt(product.getCreatedAt());
                     productService.updateProduct(updatedProduct);
