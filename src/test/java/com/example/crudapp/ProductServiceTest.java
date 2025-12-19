@@ -19,7 +19,6 @@ public class ProductServiceTest {
     private ProductService productService;
     private MockProductDAO mockDAO;
 
-    // Мок DAO для тестирования сервиса
     private static class MockProductDAO extends ProductDAO {
         private final List<Product> products = new ArrayList<>();
         private boolean throwException = false;
