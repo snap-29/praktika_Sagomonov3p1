@@ -35,15 +35,12 @@ public class ProductDialogController {
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        // Заголовок
         JLabel titleLabel = new JLabel(product == null ? "Создание нового продукта" : "Редактирование продукта");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        // Панель формы
         JPanel formPanel = createFormPanel();
 
-        // Панель кнопок
         JPanel buttonPanel = createButtonPanel();
 
         mainPanel.add(titleLabel, BorderLayout.NORTH);
@@ -51,8 +48,6 @@ public class ProductDialogController {
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         dialog.add(mainPanel);
-
-        // Заполняем поля если продукт существует
         if (product != null) {
             nameField.setText(product.getName());
             descriptionArea.setText(product.getDescription());
@@ -74,14 +69,12 @@ public class ProductDialogController {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.WEST;
 
-        // Название
         gbc.gridx = 0; gbc.gridy = 0;
         panel.add(new JLabel("Название*:"), gbc);
         gbc.gridx = 1; gbc.gridwidth = 2; gbc.weightx = 1.0;
         nameField = new JTextField(30);
         panel.add(nameField, gbc);
 
-        // Описание
         gbc.gridx = 0; gbc.gridy = 1; gbc.gridwidth = 1;
         panel.add(new JLabel("Описание:"), gbc);
         gbc.gridx = 1; gbc.gridwidth = 2; gbc.weightx = 1.0;
@@ -91,7 +84,6 @@ public class ProductDialogController {
         JScrollPane scrollPane = new JScrollPane(descriptionArea);
         panel.add(scrollPane, gbc);
 
-        // ID
         gbc.gridx = 0; gbc.gridy = 2; gbc.gridwidth = 1;
         panel.add(new JLabel("ID:"), gbc);
         gbc.gridx = 1; gbc.gridwidth = 2; gbc.weightx = 1.0;
@@ -99,7 +91,6 @@ public class ProductDialogController {
         idLabel.setBorder(BorderFactory.createEtchedBorder());
         panel.add(idLabel, gbc);
 
-        // Дата создания
         gbc.gridx = 0; gbc.gridy = 3; gbc.gridwidth = 1;
         panel.add(new JLabel("Дата создания:"), gbc);
         gbc.gridx = 1; gbc.gridwidth = 2; gbc.weightx = 1.0;
@@ -107,7 +98,6 @@ public class ProductDialogController {
         createdAtLabel.setBorder(BorderFactory.createEtchedBorder());
         panel.add(createdAtLabel, gbc);
 
-        // Дата обновления
         gbc.gridx = 0; gbc.gridy = 4; gbc.gridwidth = 1;
         panel.add(new JLabel("Дата обновления:"), gbc);
         gbc.gridx = 1; gbc.gridwidth = 2; gbc.weightx = 1.0;
@@ -115,7 +105,6 @@ public class ProductDialogController {
         updatedAtLabel.setBorder(BorderFactory.createEtchedBorder());
         panel.add(updatedAtLabel, gbc);
 
-        // Сообщение об ошибке
         gbc.gridx = 0; gbc.gridy = 5; gbc.gridwidth = 3;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         errorLabel = new JLabel(" ");
